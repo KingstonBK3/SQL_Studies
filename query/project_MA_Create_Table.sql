@@ -27,7 +27,7 @@ create table product
 insert into product(product_name,price,date_reg) values ('garderob',145.89,DEFAULT),('Fony',56.90,'04/12/2019')
 select * from product
 truncate table product--полная очистка таблицы*/
-DROP TABLE Sales
+DROP TABLE product
 --3
 create table product
 (product_id	int identity(1000,1) not null constraint pk_profukt primary key,product_name char(30) not null,price money,date_reg datetime default Getdate());
@@ -44,12 +44,29 @@ select * from customer
 select * from product
 select * from Sales
 
-create table Sales (sales_ID int not null identity(1000,1),
-product int,
+create table Sales (id_order int not null identity(300226,1),
+product int not null identity(1000,1),
 sales_count int default 1,
-date_registration date default getdate(),
-date_recieving date default getdate()+3,
-check(date_recieving>=date_registration),
-constraint sales_id primary key(sales_ID),
-constraint product_ID foreign key(product)
+date_order date default getdate(),
+date_shipping date default getdate()+3,
+check(date_shipping>=date_order),
+constraint PK_order primary key(id_order),
+constraint FK_product foreign key(product)
 references product (product_id));
+
+insert into Sales(sales_count) values
+(default),
+(3),
+(7)
+insert into Sales(product) values
+(),
+(),
+()
+
+insert into Sales(product,sales_count,date_order,date_shipping) values
+(507, 8, '2019/12/4', '2019/12/5')
+
+update product set price = 100
+where price is null
+
+
