@@ -1,19 +1,37 @@
-Use Muntjan
-select * from Students
-select * from Groups
-select * from Speciality
-
-create table Speciality(id_speciality int not null identity(10678,1),name nchar(50))
-
-drop table	Learning
-
-create table Groups(id_group varchar(8),school varchar(50) default 'Basic',education_lang varchar(50) default 'Russian',groupreg_date date,id_speciality int)
-
-create table Learning(student varchar(50),id_group varchar(8),edustart_date date,eduend_date date,edustatus varchar(50) default 'Learning',
-check(edustatus in ('finished school ','dismissed')))--Прописать
-
-
 --EXEC sp_rename 'Specialty', 'Speciality'
+
+/*
+* Создание трех таблиц для задания 10.1
+*/
+
+--Table Speciality
+CREATE TABLE Speciality (id_speciality INTEGER IDENTITY(10000,1) NOT NULL CONSTRAINT PK_id_speciality PRIMARY KEY, name_spec CHAR(59) NOT NULL)
+
+--Table Groups
+CREATE TABLE Groups (id_group CHAR(10) NOT NULL CONSTRAINT PK_id_group PRIMARY KEY,
+	school CHAR(25) NOT NULL DEFAULT 'pohikool', CHECK (school IN ('pohikool', 'kesk kool')),
+	education_lang CHAR(25) NOT NULL DEFAULT 'russian', CHECK (education_lang IN ('russian', 'eesti')),
+	city CHAR(15) NOT NULL DEFAULT 'Johvi', CHECK (city IN ('Johvi', 'Sillamae')),
+	groupDate_reg DATE NOT NULL DEFAULT getDate(),
+	Speciality INTEGER NOT NULL,
+	CONSTRAINT FK_speciality FOREIGN KEY(speciality) REFERENCES speciality (id_profession))
+
+--Table study
+CREATE TABLE Learning(sudent varchar(20) NOT NULL,
+	schoolGroup CHAR(10) NOT NULL,
+	edustart_date DATE NOT NULL DEFAULT getDate(),
+	eduend_date DATE NULL DEFAULT getDate(),
+	edustatus CHAR(20) NOT NULL, CHECK(study_status IN ('study','finish','expelled')),
+	CONSTRAINT FK_sudent FOREiGN KEY(sudent) REFERENCES student (ID_Isikukood),
+	CONSTRAINT FK_schoolGroup FOREiGN KEY(schoolGroup) REFERENCES Groups (id_group))
+
+--Insert data
+INSERT INTO Speciality (name_spec) VALUES('Noorem tarkvaraarendaja'),('keevitaja')
+INSERT INTO Groups VALUES ('JPTVR18','pohikool','russian','Johvi',DEFAULT,10000)
+INSERT INTO Groups VALUES ('JKLKV19','pohikool','english','Tallinn',DEFAULT,10001)
+INSERT INTO Learning VALUES (123214392,'JPTVR18','2018-09-09',NULL,'study'),
+	(123214352,'KTVRI17','2017-09-09','2017-12-09','finish'),
+	(123534645,'JKTBR19','2017-09-09',DEFAULT,'expelled')
 
 
 
