@@ -1,11 +1,12 @@
 use Partnership
 
---create database Partnership
+create database Partnership
 
 /*Вывод таблиц*/
 select * from reference_data
 select * from Owners
 select * from TariffsArea
+select * from TariffsHeaitng
 /*Справочная информация об квартирах*/
 
 create table reference_data(number_of_apartment int primary key,
@@ -29,6 +30,7 @@ insert into reference_data values
 9,45,8,'gas',9,'58398475983',
 10,57.9,'Central',100,'74577568655',
 11,72.8,'electrical',18,'89578457345'
+
 );
 
 /*Внешний ключ связанный с таблицей Owners FK_Isikukood*/
@@ -63,12 +65,12 @@ insert into Owners values
 
 create table TariffsArea (TariffID int identity(1,1) primary key not null,TariffDate date,TariffPrice money,AcceptedDate date)
 
-drop table Tariffs
+truncate table TariffsArea
 
 /*Вводим информацию*/
 
-insert into TariffsArea values ('2019-03-05',0.61,'2019-03-10',
-								'2020-05-09',0.71,'2020-06-03')
+insert into TariffsArea values ('2019-03-05',6.20,'2019-03-10',
+								'2020-05-09',6.26,'2020-06-03')
 /*Таблица тарифов(стоимости единицы потребляемого тепла)*/
 
 create table TariffsHeaitng (TariffID int identity(1,1) primary key not null,TariffDate date,TariffPrice money,AcceptedDate date)
@@ -78,4 +80,8 @@ drop table TariffsHeaitng
 /*Вводим информацию*/
 
 insert into TariffsHeaitng values ('2019-07-05',0.61,'2019-08-12',
-								'2020-05-09',0.71,'2020-06-03')
+								   '2020-05-09',0.71,'2020-06-03')
+
+/*Таблица счетчика*/
+
+create table Counter_Table(Accepted_Date date,Counter_) 																																																																																																																																																																																																				
