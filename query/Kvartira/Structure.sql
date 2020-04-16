@@ -27,9 +27,9 @@ insert into reference_data values
 6,77.4,'electrical',18,'62456758943',
 7,80.9,'gas',11,'65546679784',
 8,88.4,'Central',100,'54375894375',
-9,45,8,'gas',9,'58398475983',
+9,45.8,'gas',9,'58398475983',
 10,57.9,'Central',100,'74577568655',
-11,72.8,'electrical',18,'89578457345'
+11,72.8,'electrical',18,'89578457345')
 
 );
 
@@ -58,7 +58,7 @@ insert into Owners values
 '54375894375','Fred','McCarty','645633','fr.mc@gmail.com',
 '58398475983','Erron','Black','654645','er.bl@gmail.com',
 '74577568655','Michael','Jordan','747645','mi.jr@gmail.com',
-'89578457345','Elwis','Presley','856746','el.pre@gmail.com'
+'89578457345','Elwis','Presley','856746','el.pre@gmail.com')
 )
 
 /*Таблица тарифов(стоимость площади 1м*2)*/
